@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { Employee } from "../models/Employee";
+
+import { HttpService } from '../services/httpService';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,12 @@ import { Employee } from "../models/Employee";
 })
 export class HomeComponent implements OnInit {
 
-  emp: Employee[] = [];
+  emps: Employee[] = [];
 
-  constructor(private http: Http) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getAllData().subscribe( (data: Employee[]) => this.emps = data )
   }
 
 }

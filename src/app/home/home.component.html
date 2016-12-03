@@ -5,17 +5,19 @@
       <td>City</td>
       <td>State</td>
       <td>Age</td>
-      <td>Operations</td>
+      <td>Update</td>
+      <td>Delete</td>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr *ngFor=" let emp of emps ">
+      <td> {{ emp.name }} </td>
+      <td> {{ emp.address.city }} </td>
+      <td> {{ emp.address.state }} </td>
+      <td> {{ emp.age }} </td>
+      <td> <a [routerLink]="['update']">Update</a> </td>
+      <td> <a >Delete</a> </td>
     </tr>
   </tbody>
 </table>

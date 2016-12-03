@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpService } from '../services/httpService';
+
+import { Employee } from "../models/Employee";
+import { Address } from '../models/Address';
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+  }
+
+  onAdd(name, city, state, age) {
+    const emp = new Employee(name, new Address(city, state), age);
+    this.httpService.addData(emp)
+      .subscribe( (data: Employee) => console.log(data) );
   }
 
 }
