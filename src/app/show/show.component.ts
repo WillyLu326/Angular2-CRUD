@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Employee } from '../models/Employee';
+
+import { HttpService } from "../services/httpService";
 
 @Component({
   selector: 'app-show',
@@ -8,10 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowComponent implements OnInit {
 
+  emps: Employee[] = [];
+  emp: Employee;
+  curr: number = 0;
 
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
+    this.httpService.getAllData()
+      .subscribe( (data: Employee[]) => {
+        this.emps = data;
+        this.emp = this.emps[this.curr];
+      });
+  }
+
+  doPrev() {
+    this.curr--;
+    this.emp = this.emps[this.curr];
+
+  }
+
+  doNext() {
+    this.curr++;
+    this.emp = this.emps[this.curr];
   }
 
 }

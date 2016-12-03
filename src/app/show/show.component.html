@@ -1,2 +1,11 @@
 <h3>Show Employee One-By-One</h3>
 <hr>
+
+<div *ngIf="emp">
+  <h4>Name: {{ emp.name }}</h4>
+  <h4>City: {{ emp.address.city }}</h4>
+  <h4>State: {{ emp.address.state }}</h4>
+  <h4>Age: {{ emp.age }}</h4>
+  <button class="btn btn-info" (click)="doPrev()" [disabled]="curr==0">Prev</button>
+  <button class="btn btn-info" (click)="doNext()" [disabled]="curr==emps.length - 1">Next</button>
+</div>
