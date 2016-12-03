@@ -15,7 +15,7 @@ const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'add', component: AddComponent },
   { path: 'show', component: ShowComponent },
-  { path: 'update', component: UpdateComponent },
+  { path: 'update/:name', component: UpdateComponent },
   { path: '**', component: ErrorComponent }
 ];
 

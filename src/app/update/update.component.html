@@ -1,3 +1,34 @@
-<p>
-  update works!
-</p>
+<h3>Update Employee</h3>
+<div class="row">
+  <div class="col-sm-6">
+    <form class="form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" id="name" type="text" value="{{ emp.name }}" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input class="form-control" id="city" type="text" #city value="{{ emp.address.city }}">
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input class="form-control" id="state" type="text" #state value="{{ emp.address.state }}">
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input class="form-control" id="age" type="number" #age value="{{ emp.age }}">
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-danger">Clear</button>
+        <button class="btn btn-primary"
+                (click)="onUpdate(city.value, state.value, age.value)"> Update
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

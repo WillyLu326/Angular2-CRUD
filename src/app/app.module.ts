@@ -12,6 +12,7 @@ import { UpdateComponent } from './update/update.component';
 import { ErrorComponent } from './error/error.component';
 
 import { HttpService } from "./services/httpService";
+import { EmpService } from "./services/empService";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpService } from "./services/httpService";
     router
   ],
   providers: [
-    HttpService
+    HttpService,
+    EmpService
   ],
   bootstrap: [AppComponent]
 })

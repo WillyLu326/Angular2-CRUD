@@ -17,7 +17,8 @@ export class HttpService {
   constructor(private http: Http) {}
 
   getAllData(): Observable<Employee[]> {
-    return this.http.get(this.url).map( (res: Response) => res.json() );
+    return this.http.get(this.url)
+              .map( (res: Response) => res.json() );
   }
 
   addData(emp: Employee): Observable<Employee> {
@@ -27,5 +28,19 @@ export class HttpService {
 
     return this.http.post(this.url, body, { headers: headers })
               .map( (res: Response) => res.json() );
+  }
+
+  updateData(emp: Employee, name: string): Observable<Employee> {
+    const body = JSON.stringify(emp);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.put(this.url + '/' + name, body, { headers: headers })
+              .map( (res: Response) => res.json() )
+  }
+
+  deleteData(name: string): Observable<Employee> {
+    return this.http.delete(this.url + '/' + name)
+            .map( (res: Response) => res.json() );
   }
 }

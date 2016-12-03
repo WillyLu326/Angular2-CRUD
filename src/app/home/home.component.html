@@ -16,8 +16,8 @@
       <td> {{ emp.address.city }} </td>
       <td> {{ emp.address.state }} </td>
       <td> {{ emp.age }} </td>
-      <td> <a [routerLink]="['update']">Update</a> </td>
-      <td> <a >Delete</a> </td>
+      <td> <a [routerLink]="['/update', emp.name]" (click)="doUpdate(emp)" >Update</a> </td>
+      <td> <a [routerLink]="['delete', emp.name]" (click)="doDelete(emp.name)">Delete</a> </td>
     </tr>
   </tbody>
 </table>
